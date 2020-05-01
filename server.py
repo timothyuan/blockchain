@@ -65,7 +65,11 @@ def main():
         elif cmd =='c':
             print(chain[1:])
         else:
-            s.send(cmd.encode('utf-8'))
+            fields = cmd.split('|')
+            if int(fields[3])>chain[0]:
+                print('insufficient balance')
+            else:
+                s.send(cmd.encode('utf-8'))
 
 if __name__ == '__main__':
     main()
